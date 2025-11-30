@@ -1,0 +1,230 @@
+*, *::after, *::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Diogenes";
+  src:
+    url("./fonts/DIOGENES.ttf");
+}
+
+body {
+  background: #37AAA6;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.sign {
+  --amarelo: #FFD23F;
+  --preto: #483541;
+
+  font-family: "Diogenes";
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  width: 250px;
+  position: relative;
+  padding: 12px 0;
+  color: var(--preto);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 16px solid transparent;
+  border-radius: 8px;
+  background:
+    linear-gradient(var(--amarelo), var(--amarelo)) padding-box,
+    repeating-linear-gradient(
+      45deg,
+      var(--preto) 0 16px,
+      var(--amarelo) 16px 32px
+    ) border-box;
+}
+
+.sign::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom: 4px solid var(--preto);
+}
+
+.sign::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: calc(16px + 100%);
+  border: 6px solid var(--preto);
+  border-radius: 8px;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 64px);
+}
+
+section div {
+  width: 50%;
+}
+
+.logo {
+  width: 60%;
+  min-width: 250px;
+  max-width: 100%;
+  margin-bottom: 16px;
+}
+
+.float {
+  position: absolute;
+  bottom: 24px;
+  left: calc(50% + 12px);
+  border-top: 16px solid transparent;
+  transform: translateX(-50%);
+  width: 350px;
+  padding: 24px 0;
+  font-size: 2em;
+}
+
+.float::after {
+  border-top: 4px solid var(--preto);
+}
+
+.float::before {
+  top: -16px;
+  height: calc(32px + 100%);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.button {
+  padding-top: 24px;
+  animation: rotate 2s infinite both linear;
+  background-size: 100% 100%, 200% 100%;
+  transition: background-position 0.35s linear;
+}
+
+.button:hover {
+  animation: stripes 1s linear both infinite;
+}
+
+.col {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.text {
+  font-family: "Diogenes";
+  width: 60%;
+  text-wrap: pretty;
+  font-size: 1.75em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #483541;
+}
+
+footer {
+  height: 64px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 32px 32px 0;
+}
+
+footer div {
+  display: flex;
+  gap: 16px;
+}
+
+footer img {
+  width: 32px;
+}
+
+.mobile {
+  display: none;
+}
+
+@keyframes stripes {
+  0%   { background-position: 0 0, 0 0; }
+  100% { background-position: 0 0, 93px 0; }
+}
+
+@keyframes rotate {
+  0%,100% { transform: rotate(0deg); }
+  25%     { transform: rotate(-2.5deg); }
+  75%     { transform: rotate(2.5deg); }
+}
+
+@media (max-width: 900px) {
+  .baiacool {
+    width: 80%;
+  }
+
+  .float {
+    font-size: 1.5em;
+    width: 250px;
+    top: 65%;
+    bottom: auto;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    height: auto;
+    overflow: auto;
+  }
+
+  section {
+    flex-direction: column-reverse;
+    gap: 32px;
+    justify-content: flex-end;
+    padding-top: 32px;
+    height: auto;
+    min-height: calc(100vh - 64px);
+    flex-grow: 1;
+  }
+
+  section div {
+    width: 100%;
+  }
+
+  .mobile {
+    display: block;
+    height: 80px;
+    flex-shrink: 0;
+  }
+
+  .text {
+    font-size: 1.2em;
+  }
+
+  .baiacool {
+    width: 50%;
+  }
+
+  .logo {
+    width: 100%;
+  }
+}
